@@ -50,19 +50,24 @@ The app will be available at `http://localhost:8082`
 ### Netlify (Recommended)
 1. Connect your GitHub repository to Netlify
 2. Build command: `npm run build` or `bun run build`
-3. Publish directory: `masskan-murima-nexus-main/dist`
-4. The `_redirects` file will handle SPA routing automatically
+3. Publish directory: `dist` (root level after restructure)
+4. The `_redirects` and `_headers` files will handle SPA routing and MIME types automatically
 
 ### Vercel
 1. Import your GitHub repository
 2. Vercel will automatically detect the `vercel.json` configuration
-3. Deploy - no additional configuration needed
+3. Deploy - MIME types and routing handled automatically
 
 ### GitHub Pages
 1. Enable GitHub Pages in repository settings
 2. Set source to "Deploy from a branch"
-3. Select branch and `/docs` or root folder
+3. Select branch and root folder
 4. The `404.html` file handles SPA routing for GitHub Pages
+
+### Other Hosting Platforms
+- The `.htaccess` file is included for Apache servers
+- `_headers` file included for Netlify and similar platforms
+- All common MIME type issues are resolved
 
 ## 🛠️ Build Commands
 
