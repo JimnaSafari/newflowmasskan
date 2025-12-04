@@ -14,6 +14,44 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 
+interface Property {
+  id: string;
+  title: string;
+  location: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  area: number;
+  type: string;
+  price_type: string;
+  managed_by: string;
+  featured: boolean;
+  image: string;
+  created_at: string;
+}
+
+interface MarketplaceItem {
+  id: string;
+  title: string;
+  location: string;
+  price: number;
+  category: string;
+  condition: string;
+  image: string;
+  created_at: string;
+}
+
+interface MovingService {
+  id: string;
+  name: string;
+  location: string;
+  price_range: string;
+  verified: boolean;
+  rating: number;
+  image: string;
+  created_at: string;
+}
+
 const AdminListingManagement = () => {
   const [selectedCategory, setSelectedCategory] = useState('properties');
   const [searchTerm, setSearchTerm] = useState('');
@@ -113,7 +151,7 @@ const AdminListingManagement = () => {
     },
   });
 
-  const PropertyCard = ({ property }: { property: any }) => (
+  const PropertyCard = ({ property }: { property: Property }) => (
     <Card className="border-l-4 border-l-primary">
       <CardContent className="p-4">
         <div className="flex items-start gap-4">
@@ -182,7 +220,7 @@ const AdminListingManagement = () => {
     </Card>
   );
 
-  const MarketplaceCard = ({ item }: { item: any }) => (
+  const MarketplaceCard = ({ item }: { item: MarketplaceItem }) => (
     <Card className="border-l-4 border-l-secondary">
       <CardContent className="p-4">
         <div className="flex items-start gap-4">
@@ -233,7 +271,7 @@ const AdminListingManagement = () => {
     </Card>
   );
 
-  const ServiceCard = ({ service }: { service: any }) => (
+  const ServiceCard = ({ service }: { service: MovingService }) => (
     <Card className="border-l-4 border-l-accent">
       <CardContent className="p-4">
         <div className="flex items-start gap-4">

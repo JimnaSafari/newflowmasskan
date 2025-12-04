@@ -168,8 +168,8 @@ const AdminListingForm = ({ type }: AdminListingFormProps) => {
     }
   };
 
-  const updateFormData = (field: string, value: any) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+  const updateFormData = <T extends keyof PropertyFormData | keyof MarketplaceFormData>(field: T, value: string | number | boolean) => {
+    setFormData((prev: PropertyFormData | MarketplaceFormData) => ({ ...prev, [field]: value }));
   };
 
   return (
@@ -238,7 +238,7 @@ const AdminListingForm = ({ type }: AdminListingFormProps) => {
               <Label htmlFor="title">Title *</Label>
               <Input
                 id="title"
-                value={(formData as any).title}
+                value={(formData as PropertyFormData & MarketplaceFormData).title}
                 onChange={(e) => updateFormData('title', e.target.value)}
                 placeholder="Enter property/item title"
                 required
@@ -248,7 +248,7 @@ const AdminListingForm = ({ type }: AdminListingFormProps) => {
               <Label htmlFor="location">Location *</Label>
               <Input
                 id="location"
-                value={(formData as any).location}
+                value={(formData as PropertyFormData & MarketplaceFormData).location}
                 onChange={(e) => updateFormData('location', e.target.value)}
                 placeholder="Enter location"
                 required
@@ -261,7 +261,7 @@ const AdminListingForm = ({ type }: AdminListingFormProps) => {
             <Input
               id="price"
               type="number"
-              value={(formData as any).price}
+              value={(formData as PropertyFormData & MarketplaceFormData).price}
               onChange={(e) => updateFormData('price', parseInt(e.target.value) || 0)}
               placeholder="Enter price"
               required
@@ -455,7 +455,7 @@ const AdminListingForm = ({ type }: AdminListingFormProps) => {
             <Label htmlFor="description">Description</Label>
             <Textarea
               id="description"
-              value={(formData as any).description}
+              value={(formData as PropertyFormData & MarketplaceFormData).description}
               onChange={(e) => updateFormData('description', e.target.value)}
               placeholder="Enter detailed description..."
               rows={4}

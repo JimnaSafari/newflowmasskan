@@ -41,7 +41,7 @@ const AdminDashboard = () => {
       next.set('tab', selectedTab);
       navigate({ pathname: location.pathname, search: next.toString() }, { replace: true });
     }
-  }, [location.search]);
+  }, [location.search, location.pathname, selectedTab, navigate]);
 
   // Update URL when tab changes
   useEffect(() => {
@@ -50,7 +50,7 @@ const AdminDashboard = () => {
       params.set('tab', selectedTab);
       navigate({ pathname: location.pathname, search: params.toString() }, { replace: true });
     }
-  }, [selectedTab]);
+  }, [selectedTab, location.search, location.pathname, navigate]);
 
   // Fetch all data for admin overview
   const { data: bookings, isLoading: bookingsLoading } = useQuery({
